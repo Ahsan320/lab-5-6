@@ -1,0 +1,81 @@
+package today.lab.pkg5.task;
+interface Polygon {
+    public String getType();
+}
+
+ class Triangle implements Polygon {
+
+    @Override
+    public String getType() {
+        return "Triangle";
+    }
+}
+ class Square implements Polygon {
+
+    @Override
+    public String getType() {
+        return "Square";
+    }
+}
+ class Pentagon implements Polygon {
+
+    @Override
+    public String getType() {
+        return "Pentagon";
+    }
+}
+class Octagon implements Polygon {
+
+    @Override
+    public String getType() {
+        return "Octagon";
+    }
+}
+class PolygonFactory {
+
+    public static Polygon getInstance(int sides) {
+
+        Polygon polygon = null;
+
+        switch (sides) {
+            case 3:
+                polygon = new Triangle();
+                break;
+            case 4:
+                polygon = new Square();
+                break;
+            case 5:
+                polygon = new Pentagon();
+                break;
+            case 8:
+                polygon = new Octagon();
+                break;
+            default:
+               
+                break;
+        }
+
+        return polygon;
+    }
+}
+
+
+
+ class Client {
+    public static void main(String[] args) {
+
+        Polygon polygon = PolygonFactory.getInstance(3);
+        System.out.println(polygon.getType());
+
+       
+        Polygon square = PolygonFactory.getInstance(4);
+        System.out.println(square.getType());
+
+       
+        Polygon pentagon = PolygonFactory.getInstance(5);
+        System.out.println(pentagon.getType());
+
+        Polygon octagon = PolygonFactory.getInstance(8);
+        System.out.println(octagon.getType());
+    }
+}
